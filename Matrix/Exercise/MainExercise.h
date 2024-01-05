@@ -3,13 +3,11 @@
 #include "Exercise.h"
 #include <vector>
 
-namespace miit 
+
+class MainExercise
 {
-	struct MainExercise
-	{
-	public:
-		virtual ~MainExercise() = 0 {};
-		virtual Matrix ExerciseOne() = 0;
-		virtual Matrix ExerciseTwo() = 0;
-	};
-}
+public:
+	virtual ~MainExercise() = 0 {};
+	virtual Matrix ExerciseOne() = 0;
+	virtual Matrix ExerciseTwo() = 0;
+};

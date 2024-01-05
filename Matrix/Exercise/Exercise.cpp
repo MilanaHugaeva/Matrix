@@ -1,20 +1,79 @@
-﻿#include "Exercise.h"
+﻿#include "/Users/yanmi/source/repos/Matrix/Matrix/Matrix/Matrix.h"
+#include "Exercise.h"
 #include "MainExercise.h"
 #include "/Users/yanmi/source/repos/Matrix/Matrix/Matrix/Matrix.h"
 #include <vector>
 
-miit::Exercise::Exercise(Matrix matrix) :
+Exercise::Exercise(Matrix matrix) :
 	matrix(matrix)
 {
 };
 
-miit::Matrix miit::Exercise::ExerciseOne()
+void Exercise::addRow(std::vector<int> datafirst)
 {
-	miit::Matrix result{this->matrix};
-	for (size_t c = 0; c < this->matrix.collumnsQuantity(); ++c)
+	std::vector<std::vector<int>> data = matrix.getData();
+	data.push_back(datafirst);
+};
+
+int Exercise::getMaxElement()
+{
+	std::vector<std::vector<int>> data = matrix.getData();
+	int max = std::numeric_limits<int>::min();
+	for (size_t s = 0; s < data.size(); ++s) 
 	{
-		int min = this->matrix.getMinElement(c);
-		for (size_t s = 0; s < this->matrix.rowsQuantity(); ++s)
+		for (size_t c = 0; c < data[0].size(); ++c)
+		{
+			if (std::fabs(data[s][c]) >= max)
+			{
+				max = data[s][c];
+			}
+		}
+	}
+	return max;
+};
+
+int Exercise::getMinElement(size_t index) 
+{
+	std::vector<std::vector<int>> data = matrix.getData();
+	int min = std::numeric_limits<int>::max();
+	for (size_t s = 0; s < data.size(); ++s)
+	{
+		if ((data[s][index]) <= min)
+		{
+			min = data[s][index];
+		}
+	}
+	return min;
+};
+
+bool Exercise::isElementInRow(int value, size_t rowId)
+{
+	std::vector<std::vector<int>> data = matrix.getData();
+	for (size_t i = 0; i < data[rowId].size(); i++)
+	{
+		if (data[rowId][i] == value)
+		{
+			return true;
+		}
+	}
+	return false;
+};
+
+Matrix Exercise::ExerciseOne()
+{
+	Matrix result{this->matrix};
+	for (size_t c = 0; c <matrix.collumnsQuantity(); ++c)
+	{
+		std::vector<std::vector<int>> data = matrix.getData();
+		int min = std::numeric_limits<int>::max();
+		for (size_t s = 0; s < data.size(); ++s)
+		{
+			if ((data[s][c]) <= min)
+			{
+				min = data[s][c];
+			}
+		}
+		for (size_t s = 0; s < matrix.rowsQuantity(); ++s)
 		{
 			if (result[s][c] == min)
 			{
@@ -28,19 +87,23 @@ miit::Matrix miit::Exercise::ExerciseOne()
 	return result;
 }; 
 
-miit::Matrix miit::Exercise::ExerciseTwo()
+
+Matrix Exercise::ExerciseTwo()
 {
-	miit::Matrix result{};
-	for (size_t s = 0; s < this->matrix.rowsQuantity(); ++s)
-	{
-		result.addRow(matrix[s],s);
-		if (s % 2 != 0)
+	std::vector<std::vector<int>> data = matrix.getData();
+    size_t rows = data.size();
+    size_t columns = data[0].size();
+	std::vector<int> zeroLine(columns);
+	for (size_t i = 0; i < rows; i++)
+    {
+		if (matrix[i][0] % 3 == 0)
 		{
-			result.addRow(matrix[0],s);
+			data.insert(data.begin() + i, zeroLine);
 		}
-	}
-	return result;
-};
+    }
+	Matrix matrixTwo = Matrix(data);
+    return matrixTwo;
+}
 
 
 
