@@ -15,37 +15,6 @@ void Exercise::addRow(std::vector<int> datafirst)
 	data.push_back(datafirst);
 };
 
-int Exercise::getMaxElement()
-{
-	std::vector<std::vector<int>> data = matrix.getData();
-	int max = std::numeric_limits<int>::min();
-	for (size_t s = 0; s < data.size(); ++s) 
-	{
-		for (size_t c = 0; c < data[0].size(); ++c)
-		{
-			if (std::abs(data[s][c]) >= max)
-			{
-				max = data[s][c];
-			}
-		}
-	}
-	return max;
-};
-
-int Exercise::getMinElement(size_t index) 
-{
-	std::vector<std::vector<int>> data = matrix.getData();
-	int min = std::numeric_limits<int>::max();
-	for (size_t s = 0; s < data.size(); ++s)
-	{
-		if ((data[s][index]) <= min)
-		{
-			min = data[s][index];
-		}
-	}
-	return min;
-};
-
 bool Exercise::isElementInRow(int value, size_t rowId)
 {
 	std::vector<std::vector<int>> data = matrix.getData();
@@ -85,7 +54,6 @@ Matrix Exercise::ExerciseOne()
 	}
 	return result;
 }; 
-
 
 Matrix Exercise::ExerciseTwo()
 {

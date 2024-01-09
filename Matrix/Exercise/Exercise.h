@@ -22,12 +22,6 @@ public:
 	Matrix ExerciseTwo() override;
 
 	/**
-	* @brief Получение минимального элемента в матрице
-	* @return Минимальный елемент в матрице
-	*/
-	int getMinElement(size_t index) ;
-
-	/**
 	* @brief Проверка элемента в строке в матрице
 	*/
 	bool isElementInRow(int value, size_t rowId);
@@ -38,11 +32,5 @@ public:
 	* @param index Индекс для добавления строки
 	*/
 	void addRow(std::vector<int> data);
-
-	/**
-	* @brief Получение максимального по модулю элемента в матрице
-	* @return Максимальный по модулю елемент в матрице
-	*/
-	int getMaxElement();
 
 };
