@@ -23,7 +23,7 @@ int Exercise::getMaxElement()
 	{
 		for (size_t c = 0; c < data[0].size(); ++c)
 		{
-			if (std::fabs(data[s][c]) >= max)
+			if (std::abs(data[s][c]) >= max)
 			{
 				max = data[s][c];
 			}
@@ -82,7 +82,6 @@ Matrix Exercise::ExerciseOne()
 				}
 			}
 		}
-
 	}
 	return result;
 }; 

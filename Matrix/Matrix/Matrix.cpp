@@ -7,6 +7,17 @@
 Matrix::Matrix(int rows, int collumns, Generator* generator):
 	data({})
 {
+	if (rows <= 0 || collumns <= 0)
+	{
+		throw std::logic_error("Размер должен быть положительным");
+	}
+	if (generator == nullptr)
+	{
+		throw std::logic_error("Некорректные данные");
+	}
+	rows = static_cast<size_t>(rows);
+	collumns = static_cast<size_t>(collumns);
+
 	for (size_t s = 0; s < rows; s++)
 	{
 		std::vector<int> temp{};
